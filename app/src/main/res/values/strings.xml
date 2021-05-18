@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">My Cart</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="product_thumbnail">Product\'s thumbnail</string>
+    <string name="add_to_cart">Add To Cart</string>
+    <string name="search_products_by_name">Search products by name</string>
+    <string name="my_cart">My Cart</string>
+    <string name="default_cart_size">1</string>
+    <string name="cart_item_image">Cart Item Image</string>
+    <string name="product_image">Product Image</string>
+    <string name="quantity_abbr">Qty</string>
+    <string name="delete_product_image_button">Delete Product Image Button</string>
+    <string name="default_total_text">920.000</string>
+    <string name="checkout">Checkout</string>
+    <string name="thank_you">Thanks for your order.</string>
+    <string name="continue_shopping">Continue Shopping</string>
+    <string name="default_product_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</string>
+    <string name="description">Description</string>
+    <string name="total">Total</string>
+
+    <string-array name="quantity_string_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5(Max)</item>
+    </string-array>
+
+</resources>
