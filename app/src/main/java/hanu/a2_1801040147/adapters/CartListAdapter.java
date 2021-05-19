@@ -42,22 +42,26 @@ public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartV
             cartRowBinding.setCartInterface(cartInterface);
 
             cartRowBinding.increaseQuantityButton.setOnClickListener(v -> {
-                CartItem cartItem = cartRowBinding.getCartItem();
+                try {
+                    CartItem cartItem = cartRowBinding.getCartItem();
 
-                int quantity = cartItem.getQuantity();
+                    int quantity = cartItem.getQuantity();
 
-                cartInterface.changeQuantity(cartItem, quantity + 1);
+                    cartInterface.changeQuantity(cartItem, quantity + 1);
+                } catch (ArrayIndexOutOfBoundsException ignored) { }
             });
 
             cartRowBinding.decreaseQuantityButton.setOnClickListener(v -> {
-                CartItem cartItem = cartRowBinding.getCartItem();
+                try {
+                    CartItem cartItem = cartRowBinding.getCartItem();
 
-                int quantity = cartItem.getQuantity();
+                    int quantity = cartItem.getQuantity();
 
-                if (quantity <= 1)
-                    cartInterface.deleteItem(cartItem);
-                else // quantity > 1
-                    cartInterface.changeQuantity(cartItem, quantity - 1);
+                    if (quantity <= 1)
+                        cartInterface.deleteItem(cartItem);
+                    else // quantity > 1
+                        cartInterface.changeQuantity(cartItem, quantity - 1);
+                } catch (ArrayIndexOutOfBoundsException ignored) {}
             });
 
 //            cartRowBinding.deleteProductButton.setOnClickListener(v -> cartInterface.deleteItem(getItem(getAdapterPosition())));

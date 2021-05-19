@@ -1,7 +1,6 @@
 package hanu.a2_1801040147.views;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import hanu.a2_1801040147.R;
 import hanu.a2_1801040147.adapters.CartListAdapter;
@@ -75,6 +76,9 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
     @Override
     public void deleteItem(CartItem cartItem) {
         shopViewModel.removeItemFromCart(cartItem);
+        Snackbar.make(requireView(), cartItem.getProduct().getName() + " removed from cart.", Snackbar.LENGTH_LONG)
+                .setAction("Undo", v -> shopViewModel.addItemToCart(cartItem.getProduct()))
+                .show();
     }
 
     @Override

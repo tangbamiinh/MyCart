@@ -9,7 +9,11 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
+import hanu.a2_1801040147.R;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,6 +25,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product {
+
+    private static final RequestOptions options = new RequestOptions()
+            .centerCrop()
+            .placeholder(R.drawable.progress_animation)
+            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+            .priority(Priority.HIGH)
+            .dontAnimate()
+            .dontTransform();
 
     @PrimaryKey
     @NonNull
@@ -48,6 +60,7 @@ public class Product {
     public static void loadImage(ImageView imageView, String imageUrl) {
         Glide.with(imageView)
                 .load(imageUrl)
+                .apply(options)
                 .fitCenter()
                 .into(imageView);
     }

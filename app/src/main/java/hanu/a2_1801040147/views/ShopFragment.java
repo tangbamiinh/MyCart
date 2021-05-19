@@ -63,6 +63,8 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
 
         shopListAdapter = new ShopListAdapter(this);
         fragmentShopBinding.shopRecyclerView.setAdapter(shopListAdapter);
+        
+        fragmentShopBinding.shopRecyclerView.setHasFixedSize(true);
 
         shopViewModel = new ViewModelProvider(requireActivity()).get(ShopViewModel.class);
 
@@ -94,24 +96,18 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
         // When text changed
         fragmentShopBinding.searchTextInputEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() > 0) {
-                    Log.i(TAG, "onTextChanged: " + s.toString());
+                if (s.length() > 0)
                     shopViewModel.searchProducts(s.toString());
-                } else {
+                else
                     shopViewModel.cancelSearchProducts();
-                }
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
-
-            }
+            public void afterTextChanged(Editable s) { }
         });
 
         // OnEditorAction
