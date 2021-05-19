@@ -34,8 +34,7 @@
                     android:layout_gravity="center"
                     android:contentDescription="@string/product_image"
                     android:productImage="@{shopViewModel.product.thumbnail}"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/iphone11" />
+                    android:scaleType="fitCenter" />
 
                 <Space
                     android:layout_width="match_parent"
