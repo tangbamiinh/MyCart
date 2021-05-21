@@ -88,8 +88,10 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
 
     @Override
     public void onItemClick(CartItem cartItem) {
-        shopViewModel.setProduct(cartItem.getProduct());
-        navController.navigate(R.id.action_cartFragment_to_productDetailFragment);
+        try {
+            shopViewModel.setProduct(cartItem.getProduct());
+            navController.navigate(R.id.action_cartFragment_to_productDetailFragment);
+        } catch (IllegalArgumentException ignored) {}
     }
 
     @Override

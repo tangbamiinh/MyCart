@@ -1,9 +1,6 @@
 package hanu.a2_1801040147.models;
 
-import android.widget.Spinner;
-
 import androidx.annotation.NonNull;
-import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -33,11 +30,6 @@ public class CartItem {
 
     @Builder.Default
     private Integer quantity = 1;
-
-    @BindingAdapter("android:setVal")
-    public static void getSelectedSpinnerValue(Spinner spinner, int quantity) {
-        spinner.setSelection(quantity - 1, true);
-    }
 
     public static DiffUtil.ItemCallback<CartItem> itemCallback = new DiffUtil.ItemCallback<CartItem>() {
         @Override

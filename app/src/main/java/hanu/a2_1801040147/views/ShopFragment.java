@@ -136,8 +136,11 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
 
     @Override
     public void onItemClick(Product product) {
-        shopViewModel.setProduct(product);
-        navController.navigate(R.id.action_shopFragment_to_productDetailFragment);
+        try {
+            shopViewModel.setProduct(product);
+            navController.navigate(R.id.action_shopFragment_to_productDetailFragment);
+        } catch (IllegalArgumentException ignored) {
+        }
     }
 
     public void hideSoftKeyboard(Activity activity, View view) {
