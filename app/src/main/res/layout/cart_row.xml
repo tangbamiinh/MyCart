@@ -53,8 +53,22 @@
 
             <TextView
                 android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="3dp"
                 android:id="@+id/product_unit_price_tv"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@{CurrencyFormatter.format(cartItem.product.unitPrice)}"
+                app:layout_constraintBottom_toTopOf="@id/cartItemTotalPriceTextView"
+                app:layout_constraintRight_toLeftOf="@id/decreaseQuantityButton"
+                app:layout_constraintLeft_toRightOf="@+id/productImageView"
+                android:layout_marginStart="10dp" />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/cartItemTotalPriceTextView"
                 style="@style/TextAppearance.MaterialComponents.Caption"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -75,7 +89,8 @@
                 android:contentDescription="@string/add_to_cart"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_arrow_drop_up_24" />
+                app:srcCompat="@drawable/ic_baseline_arrow_drop_up_24"
+                android:layout_marginEnd="8dp" />
 
             <TextView
                 android:id="@+id/quantityTextView"
@@ -98,7 +113,8 @@
                 android:contentDescription="@string/add_to_cart"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:srcCompat="@drawable/ic_baseline_arrow_drop_down_24" />
+                app:srcCompat="@drawable/ic_baseline_arrow_drop_down_24"
+                android:layout_marginEnd="8dp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

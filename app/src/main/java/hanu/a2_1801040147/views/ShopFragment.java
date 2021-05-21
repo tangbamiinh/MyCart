@@ -22,6 +22,8 @@ import androidx.navigation.Navigation;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.Objects;
+
 import hanu.a2_1801040147.R;
 import hanu.a2_1801040147.adapters.ShopListAdapter;
 import hanu.a2_1801040147.databinding.FragmentShopBinding;
@@ -86,7 +88,7 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
     }
 
     private void showDialog() {
-        progressDialog.setMessage("Loading Products");
+        progressDialog.setMessage("Getting products for you...");
         progressDialog.setCancelable(false);
         progressDialog.setInverseBackgroundForced(false);
         progressDialog.show();

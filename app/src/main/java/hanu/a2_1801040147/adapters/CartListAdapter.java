@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import hanu.a2_1801040147.databinding.CartRowBinding;
 import hanu.a2_1801040147.models.CartItem;
+import hanu.a2_1801040147.utils.CurrencyFormatter;
 
 public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartViewHolder> {
 
@@ -28,8 +29,10 @@ public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartV
 
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
-        holder.cartRowBinding.setCartItem(getItem(position));
+        CartItem cartItem = getItem(position);
+        holder.cartRowBinding.setCartItem(cartItem);
         holder.cartRowBinding.executePendingBindings();
+        holder.setCartItem(cartItem);
     }
 
     class CartViewHolder extends RecyclerView.ViewHolder {
@@ -63,24 +66,13 @@ public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartV
                         cartInterface.changeQuantity(cartItem, quantity - 1);
                 } catch (ArrayIndexOutOfBoundsException ignored) {}
             });
+        }
 
-//            cartRowBinding.deleteProductButton.setOnClickListener(v -> cartInterface.deleteItem(getItem(getAdapterPosition())));
+        void setCartItem(CartItem cartItem) {
+            String formattedTotalCartItemPrice = CurrencyFormatter.format(cartItem.getProduct().getUnitPrice() * cartItem.getQuantity());
 
-//            cartRowBinding.quantitySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                @Override
-//                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                    int quantity = position + 1;
-//                    if (quantity == getItem(getAdapterPosition()).getQuantity()) {
-//                        return;
-//                    }
-//                    cartInterface.changeQuantity(getItem(getAdapterPosition()), quantity);
-//                }
-//
-//                @Override
-//                public void onNothingSelected(AdapterView<?> parent) {
-//
-//                }
-//            });
+            String repr = "Total: " + formattedTotalCartItemPrice;
+            cartRowBinding.cartItemTotalPriceTextView.setText(repr);
         }
     }
 
